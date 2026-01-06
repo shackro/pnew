@@ -1,0 +1,35 @@
+{
+  "builds": [
+    {
+      "src": "pesaprime_v1/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/media/(.*)",
+      "dest": "/media/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "pesaprime_v1/wsgi.py"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "pesaprime_v1.settings",
+    "PYTHONPATH": "/var/task",
+    "ALLOWED_HOSTS": ".vercel.app,.now.sh",
+    "CSRF_TRUSTED_ORIGINS": "https://*.vercel.app,https://*.now.sh"
+  },
+  "build": {
+    "env": {
+      "VERCEL": "1",
+      "DJANGO_SETTINGS_MODULE": "pesaprime_v1.settings",
+      "PYTHONPATH": "/var/task"
+    }
+  }
+}
