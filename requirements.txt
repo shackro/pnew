@@ -1,0 +1,6 @@
+asgiref==3.11.0
+crispy-tailwind==1.0.3
+Django==6.0
+django-crispy-forms==2.5
+pillow==12.1.0
+sqlparse==0.5.5
