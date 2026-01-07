@@ -56,7 +56,7 @@ def get_currency_context(user):
 
 
 @login_required
-def dashboard(request):
+def index(request):
     """Main dashboard with assets preview"""
     # Get or create wallet
     wallet, created = Wallet.objects.get_or_create(

@@ -5,7 +5,7 @@ from investments.views import asset_detail
 app_name = 'core'
 
 urlpatterns = [
-    path('', views.dashboard, name='home'),
+    path('', views.index, name='home'),
     path('wallet', views.wallet, name='wallet'),
     path('bonus', views.bonus_list, name='bonus'),
     path('assets', views.assets_view, name='assets'),

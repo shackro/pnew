@@ -2,65 +2,17 @@
   "builds": [
     {
       "src": "pesaprime_v1/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.11"
-      }
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/static/$1",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
-    },
-    {
-      "src": "/media/(.*)",
-      "dest": "/media/$1",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000"
-      }
-    },
-    {
-      "src": "/favicon.ico",
-      "dest": "/static/favicon.ico"
-    },
-    {
-      "src": "/favicon.png",
-      "dest": "/static/favicon.png"
-    },
-    {
-      "src": "/robots.txt",
-      "dest": "/static/robots.txt"
+      "dest": "/static/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "pesaprime_v1/wsgi.py",
-      "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
+      "dest": "pesaprime_v1/wsgi.py"
     }
-  ],
-  "env": {
-    "DJANGO_SETTINGS_MODULE": "pesaprime_v1.settings.production",
-    "PYTHONPATH": "/var/task",
-    "ALLOWED_HOSTS": ".vercel.app,.now.sh",
-    "CSRF_TRUSTED_ORIGINS": "https://*.vercel.app,https://*.now.sh",
-    "VERCEL": "1"
-  },
-  "build": {
-    "env": {
-      "VERCEL": "1",
-      "DJANGO_SETTINGS_MODULE": "pesaprime_v1.settings.production",
-      "PYTHONPATH": "/var/task",
-      "PYTHON_VERSION": "3.11"
-    }
-  },
-  "functions": {
-    "pesaprime_v1/wsgi.py": {
-      "maxDuration": 30,
-      "memory": 3008
-    }
-  }
+  ]
 }
